@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ASCII Aquarium Flasher</title>
+    <script
+      type="module"
+      src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module">
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #06151f;
+        --panel: #0b2230;
+        --panel-soft: #102d3d;
+        --text: #ffffff;
+        --muted: #b8d7e6;
+        --quiet: #8fb6c9;
+        --accent: #20c997;
+        --accent-dark: #041011;
+        --border: rgba(184, 215, 230, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, sans-serif;
+      }
+
+      main {
+        width: min(880px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 36px 0;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 42px;
+        line-height: 1.08;
+        margin: 0 0 8px;
+      }
+
+      p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .demo-gif {
+        width: min(520px, 100%);
+        border-radius: 8px;
+        margin: 22px auto 28px;
+        display: block;
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      }
+
+      .button-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin: 26px 0 0;
+      }
+
+      .board-card {
+        min-height: 192px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--panel);
+        text-align: left;
+      }
+
+      .board-card h2 {
+        margin: 0 0 8px;
+        font-size: 21px;
+        line-height: 1.2;
+      }
+
+      .board-card p {
+        color: var(--quiet);
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .board-card a {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      button {
+        width: 100%;
+        min-height: 48px;
+        padding: 13px 16px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--accent);
+        color: var(--accent-dark);
+        font-size: 17px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        background: var(--panel-soft);
+        color: var(--quiet);
+        cursor: not-allowed;
+      }
+
+      .note {
+        margin-top: 24px;
+        color: var(--quiet);
+        font-size: 15px;
+      }
+
+      .slot-message {
+        display: block;
+        color: var(--quiet);
+        font-size: 13px;
+        line-height: 1.35;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 760px) {
+        main {
+          padding: 28px 0;
+        }
+
+        h1 {
+          font-size: 34px;
+        }
+
+        .button-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .board-card {
+          min-height: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>ASCII Aquarium Flasher</h1>
+      <p>Flash the ASCII fish tank directly from the browser.</p>
+
+      <img
+        class="demo-gif"
+        src="assets/ASCII_Aqurium_Title_GIF.gif"
+        alt="ASCII Aquarium title screen">
+
+      <section class="button-grid" aria-label="Board flash options">
+        <article class="board-card">
+          <div>
+            <h2>Standard CYD</h2>
+            <p>For the common ESP32-2432S028R Cheap Yellow Display. Installs v2.20.</p>
+          </div>
+          <esp-web-install-button manifest="manifest-cyd.json">
+            <button slot="activate">Flash Standard CYD</button>
+            <span class="slot-message" slot="unsupported">Use Chrome, Edge, or Firefox 151 or newer on a desktop computer.</span>
+            <span class="slot-message" slot="not-allowed">This page needs HTTPS to flash your board.</span>
+          </esp-web-install-button>
+        </article>
+
+        <article class="board-card">
+          <div>
+            <h2>CYD2USB</h2>
+            <p>For the CYD2USB board variant. Use this only if your board matches that port. Installs v2.20.</p>
+          </div>
+          <esp-web-install-button manifest="manifest-cyd2usb.json">
+            <button slot="activate">Flash CYD2USB</button>
+            <span class="slot-message" slot="unsupported">Use Chrome, Edge, or Firefox 151 or newer on a desktop computer.</span>
+            <span class="slot-message" slot="not-allowed">This page needs HTTPS to flash your board.</span>
+          </esp-web-install-button>
+        </article>
+
+        <article class="board-card">
+          <div>
+            <h2>jc3248w535</h2>
+            <p>
+              For the
+              <a href="https://www.aliexpress.com/item/1005007566332450.html" target="_blank" rel="noopener">jc3248w535</a>
+              ESP32-S3 board. Installs v2.30_JC.
+            </p>
+          </div>
+          <esp-web-install-button manifest="manifest-jc3248w535.json">
+            <button slot="activate">Flash jc3248w535</button>
+            <span class="slot-message" slot="unsupported">Use Chrome, Edge, or Firefox 151 or newer on a desktop computer.</span>
+            <span class="slot-message" slot="not-allowed">This page needs HTTPS to flash your board.</span>
+          </esp-web-install-button>
+        </article>
+      </section>
+
+      <p class="note">
+        Plug in your board with a data USB cable, close Arduino IDE Serial Monitor if it is open,
+        then choose the button that matches your exact board.
+      </p>
+    </main>
+  </body>
+</html>
