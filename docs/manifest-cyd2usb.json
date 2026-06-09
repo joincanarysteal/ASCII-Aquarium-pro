@@ -1,0 +1,16 @@
+{
+  "name": "ASCII Aquarium CYD2USB",
+  "version": "2.20",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware/ascii-aquarium-cyd2usb-v2.20.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
